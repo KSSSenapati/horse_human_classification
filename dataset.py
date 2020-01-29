@@ -13,10 +13,10 @@ def getdata(train_path, test_path):
     
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))])
     
-    trainset = torchvision.datasets.ImageFolder(root = "data/train", transform = transform)
+    trainset = torchvision.datasets.ImageFolder(root = train_path, transform = transform)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size = 1, shuffle = True, num_workers = 4)
     
-    testset = torchvision.datasets.ImageFolder(root = "data/train", transform = transform)
-    trainloader = torch.utils.data.DataLoader(testset, batch_size = 1, shuffle = True, num_workers = 4)
+    testset = torchvision.datasets.ImageFolder(root = test_path, transform = transform)
+    testloader = torch.utils.data.DataLoader(testset, batch_size = 1, shuffle = True, num_workers = 4)
 
     return trainloader, testloader, trainset.classes
